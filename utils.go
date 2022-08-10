@@ -3,6 +3,7 @@ package utils
 import (
 	"bytes"
 	"crypto/md5"
+	"crypto/sha256"
 	"encoding/hex"
 	"reflect"
 	"text/template"
@@ -83,5 +84,11 @@ func MD5(v string) string {
 	var sum = md5.Sum([]byte(v))
 	var value = hex.EncodeToString(sum[:])
 
+	return value
+}
+
+func SHA256(v string) string {
+	var sum = sha256.Sum256([]byte(v))
+	var value = hex.EncodeToString(sum[:])
 	return value
 }
